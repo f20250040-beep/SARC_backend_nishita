@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Available Books</h2>
+<div class="row">
+  {% for book in books %}
+    <div class="col-md-3">
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5>{{ book.title }}</h5>
+          <p><i>{{ book.author }}</i></p>
+          <p>{{ book.genre }}</p>
+          <p>Status: <b>{{ book.status }}</b></p>
+          {% if book.status == "available" %}
+            <a href="/cart/add/{{ book.id }}" class="btn btn-success btn-sm">Add to Cart</a>
+          {% else %}
+            <span class="badge bg-secondary">Issued</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

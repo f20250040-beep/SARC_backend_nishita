@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Your Cart</h2>
+
+<ul class="list-group">
+    {% for book in cart %}
+        <li class="list-group-item">{{ book.title }} by {{ book.author }}</li>
+    {% else %}
+        <li class="list-group-item">Cart is empty</li>
+    {% endfor %}
+</ul>
+
+{% if cart %}
+    <a href="/cart/issue" class="btn btn-primary mt-3">Issue Books</a>
+{% endif %}
+{% endblock %}
